@@ -3,19 +3,23 @@
 **Table of Contents:**
 
 1. [General information](#generalinformation)
-1. [TrainingRecorder](#trainingrecorder)
-1. [DataProvider](#dataprovider)
-1. [FeatureProvider](#featureprovider)
-1. [main](#main)
-1. [main_function](#mainfunction)
-1. [PredictionInterpreter](#predictioninterpreter)
-1. [PredictionHandler](#predictionhandler)
-1. [TrainingRecorder](#trainingrecorder)
+2. [TrainingDataRecorder](#traindatarecorder)
+3. [DataProvider](#dataprovider)
+4. [FeatureProvider](#featureprovider)
+5. [main](#main)
+6. [main_function](#mainfunctions)
+7. [PredictionInterpreter](#predictioninterpreter)
+8. [PredictionHandler](#predictionhandler)
 
 ---
 
 ## General information
-This file will guide you through the designed architecture for the embedded device. <br> The architecture we developed is based on the TinyML pipeline from [Pete Warden and Daniel Situnayake](https://tinymlbook.files.wordpress.com/2020/01/tflite_micro_preview.pdf). <br> We've done some changes to be more beginner friendly. We also didn't like the C-like approach form the book so we wrote the pipeline in C++. So you can easily implement new functions within our classes. <br> Accordingly we use classes to pipe our data through the different stages till we reach the TfLite interpreter. The figure below shows the data flow we aimed for. In this section we will focus on the embedded device part. 
+This file will guide you through the architecture for the embedded device in greater detail than [ARCHITECTURE.md](../ARCHITECTURE.md).
+We focus on describing the initialization process and the super loop implemented in `main_functions.cpp` in greater detail.
+Our embedded architecture is based on the TinyML pipeline of [Pete Warden and Daniel Situnayake](https://tinymlbook.files.wordpress.com/2020/01/tflite_micro_preview.pdf).
+Our changes are aimed at making the architecture more beginner friendly and converting code from a C-style to an OOP and C++11 based style.
+Accordingly we use classes to pipe our data through the different stages of processing.
+The figure below summarizes the data flow.
 
 ![Data flow](/img/schema_pipeline_simplified.png)
 
@@ -36,7 +40,7 @@ Within this class we implemented three functions. The first one SetInputData() c
 We use this file as a wrapper for the main function `app_main()` which is required by FreeRTOS. The `app_main()` function creates tasks within FreeRTOS which contains functions. The Task creates the setup und main function we use in `main_function.cpp` to run our code in an "arduinoish" way.
 
 
-## main_function
+## main_functions
 
 First we create a namespace in which we declare some variables and arrays we will use later to store some values and tensors. We also initialize the tensor arena size, which declares the needed memory space for our model. The last step is to initialize our class objects which we will use to send our data through the different steps.
 
