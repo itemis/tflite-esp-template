@@ -1,0 +1,3 @@
+[submodule "components/tflite-micro-esp-examples"]
+	path = components/sources/tflite-micro-esp-examples
+	url = https://github.com/espressif/tflite-micro-esp-examples
