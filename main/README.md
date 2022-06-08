@@ -15,20 +15,17 @@
 ---
 
 ## General information
-This file will guide you through the designed architecture for the embedded device. <br> The architecture we developed is based on the TinyML pipeline from [Pete Warden and Daniel Situnayake](https://tinymlbook.files.wordpress.com/2020/01/tflite_micro_preview.pdf). <br> We've done some changes to be more beginner friendly. We also didn't like the C-like approach form the book so we wrote the pipeline in C++. <br> Accordingly we use classes to pipe our data through the different stages till we reach the TfLite interpreter. The figure below shows the data flow we aimed for. In this section we will focus on the embedded device part. 
+This file will guide you through the designed architecture for the embedded device. <br> The architecture we developed is based on the TinyML pipeline from [Pete Warden and Daniel Situnayake](https://tinymlbook.files.wordpress.com/2020/01/tflite_micro_preview.pdf). <br> We've done some changes to be more beginner friendly. We also didn't like the C-like approach form the book so we wrote the pipeline in C++. So you can easily implement new functions within our classes. <br> Accordingly we use classes to pipe our data through the different stages till we reach the TfLite interpreter. The figure below shows the data flow we aimed for. In this section we will focus on the embedded device part. 
 
 ![Data flow](/img/schema_pipeline_simplified.png)
 
-## TrainingRecorder
+## TrainDataRecorder
 
-- data collection for model training
-- possibly, command line args documentation
+This file should be used to record some training data. This data needs to be stored in some way. We usally pipe the data to a CSV file.
 
 ## DataProvider
 
-- pin, camera, periphery initialization
-- raw data recording
-- overlap with data collection
+This file  is almost identical to TrainDataRecorder except for stored data part. This class contains two functions. The first function is called init(). We use this file to initiliaze our sensors. The second function is called Read(). Here we read the sensor data. This file pipes the incoming data to the feature provider.
 
 ## FeatureProvider
 
@@ -143,8 +140,4 @@ Here we can use the output from PredictionInterpreter to perform some actions wi
     - Grafana
     - MQTT
     - WiFi
-
-## CMakeLists.txt
-
-- how to configure
 
