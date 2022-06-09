@@ -10,7 +10,7 @@ Make the component update script executable.
 
 Run the component update script.
 
-    ./scripts/update_components
+    ./scripts/update_components.sh
 
 ## Adding Dependencies
 
@@ -25,11 +25,13 @@ If the relevant component is buried inside the submodule repository add the subm
 
 If necessary, modify `scripts/update_components.sh` to extract the components from the submodule repository.
 The extracted component must have the form of a folder containing a `CMakeLists.txt` file and should live in `components`.
+
 ```bash
     # add the following code to update_components.sh
     rm -r components/MPU6050
     cp components/sources/i2cdevlib/ESP32_ESP-IDF/components/MPU6050 components/MPU6050
 ```
+
 Run the component update script to extract the dependencies.
 
     ./scripts/update_components
@@ -37,8 +39,9 @@ Run the component update script to extract the dependencies.
 Update `main/CMakeLists.txt` to include added dependencies.
 Add your component within `idf_component_register()`, to the right hand side of `REQUIRES`.
 Leave a space between existing components.
+
 ```bash
-    idf_component_register(SRCS ${SOURCES}
-                            INCLUDE_DIRS . inc
-                            REQUIRES existing_component MPU6050)
+idf_component_register(SRCS ${SOURCES}
+                        INCLUDE_DIRS . inc
+                        REQUIRES existing_component MPU6050)
 ```

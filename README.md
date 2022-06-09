@@ -18,6 +18,55 @@ Second, preprocessing involves reshaping data into a format suitable for trainin
 Third, model design and training.
 Training is done using Google’s TensorFlow framework. Fourth, the model must be converted from TensorFlow to Tensorflow Lite and then to a C or C++ compatible format. Lastly, we deploy the model onto a microcontroller to compute predictions.
 
+# Requirements
+
+## Python, model creation
+
+**Python**
+
+Install Python. Version 3.10 is tested.
+
+Install packages
+
+    pip install -r requirements.txt
+
+## Embedded C/C++, embedded model deployment
+
+**Espressif IDF**
+
+Version 1.4 is tested.
+Install via VSCode > Extensions > ESP-IDF > Express installation with all defaults.
+At the end of the installation a command is shown.
+This command should be executed to grant complete permissions.
+
+**Libraries**
+
+Next, download dependencies for the embedded system.
+
+    chmod +x scripts/update_components.sh
+    .scripts/update_components.sh
+
+## Respect the pipeline requirements
+
+1. Data must be present in order to start training.
+2. Preprocessing may be necessary.
+3. A model must be trained and stored.
+4. The model must be converted to a C array and included in the embedded code.
+5. You cannot run your project on an MCU before completing above steps.
+
+# Running
+
+## Python environment
+
+Execute Jupyter files via GUI.
+
+## Embedded environment
+
+See [ESP documentation](https://docs.espressif.com/projects/esp-idf/en/v4.1/get-started/index.html) for an initial setup of the embedded environment.
+Afterwards, feel free to use this shorthand.
+
+    get_idf && idf.py build && idf.py -p /dev/ttyUSB0 flash monitor
+
 # Architecture
 
 The architecture of this repository is designed to be simple and self explanatory.
