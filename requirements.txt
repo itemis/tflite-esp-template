@@ -1,0 +1,24 @@
+# requirements for the python project
+
+# essential
+numpy
+tensorflow
+keras
+
+# optional
+opencv-python
+keras_tuner
+sklearn
+matplotlib
+jupyter
+selenium
+pydot # requires graphviz https://www.graphviz.org/download/
+
+
+# development
+black
+isort
+pylint
+pycodestyle
+pep8-naming
+pydocstyle
