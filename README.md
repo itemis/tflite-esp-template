@@ -1,7 +1,7 @@
 **Table of Contents:**
 
 1. [General information](#general-information)
-1. [Repository structure](#repository-structure)
+1. [Requirements](#requirements)
 1. [ARCHITECTURE](#architecture)
 1. [CONTRIBUTING](#contributing)
 1. [LICENSE](#license)
