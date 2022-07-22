@@ -11,15 +11,7 @@
 
 This repository contains a template which you can use to develop your own TinyML projects with an ESP-Board of your choice and the ESP-IDF. 
 
-The provided pipeline is based on the TinyML pipeline which you can find in Pete Warden’s and Daniel Situnayake’s TinyML book. Our pipeline consists of five steps. First, data collection requires connecting with hardware and reading data to your PC. Second, preprocessing involves reshaping data into a format suited for training a ML model. Third, design and training. Training is done using Google’s TensorFlow framework. Fourth, the model must be converted from TensorFlow to Tensorflow Lite and then to a C or C++ compatible format. Lastly, we deploy the model onto a microcontroller and run inference.
-
-The architecture of this repository is designed to be simple and self explanatory. In the following sections we will show you what you can find in each folder. If you want a deeper look you can click on the title to get more information. We recommend to read all readme's in this repo.
-The provided pipeline is based on the TinyML pipeline which you can find in Pete Warden’s and Daniel Situnayake’s TinyML book.
-Our pipeline consists of five steps.
-First, data collection requires connecting to hardware and reading data to your PC.
-Second, preprocessing involves reshaping data into a format suitable for training a ML model.
-Third, model design and training.
-Training is done using Google’s TensorFlow framework. Fourth, the model must be converted from TensorFlow to Tensorflow Lite and then to a C or C++ compatible format. Lastly, we deploy the model onto a microcontroller to compute predictions.
+The provided template is based on the TinyML pipeline which you can find in Pete Warden’s and Daniel Situnayake’s TinyML book. Our pipeline consists of five steps. First, data collection requires connecting with hardware and reading data to your PC. Second, preprocessing involves reshaping data into a format suited for training a ML model. Third, design and training. Training is done using Google’s TensorFlow framework. Fourth, the model must be converted from TensorFlow to Tensorflow Lite and then to a C or C++ compatible format. Lastly, we deploy the model onto a microcontroller and run inference.
 
 # Requirements
 
