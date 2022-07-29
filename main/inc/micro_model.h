@@ -2,6 +2,6 @@
 #define TINY_HUMAN_DETECTION_MODEL_DATA_H_
 
 extern const unsigned char micro_model[];
-extern const int micro_model_len;
+extern const unsigned int micro_model_len;
 
 #endif 
