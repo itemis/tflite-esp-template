@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    
+
     - name: Checkout repo
       uses: actions/checkout@v2
       with:
@@ -17,7 +17,7 @@ jobs:
     - name: Load submodules
       run: chmod +x ./scripts/update_components.sh && ./scripts/update_components.sh 
     - name: Lint
-    - uses: cpp-linter/cpp-linter-action@v1
+      uses: cpp-linter/cpp-linter-action@v1
         id: linter
 
     - name: esp-idf build
