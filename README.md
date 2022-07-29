@@ -1,3 +1,5 @@
+![template](https://github.com/itemis/tflite-esp-template/actions/workflows/cmake.yml/badge.svg)
+
 **Table of Contents:**
 
 1. [General information](#general-information)
