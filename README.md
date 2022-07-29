@@ -39,7 +39,7 @@ This command should be executed to grant complete permissions.
 Next, download dependencies for the embedded system.
 
     chmod +x scripts/update_components.sh
-    .scripts/update_components.sh
+    ./scripts/update_components.sh
 
 ## Respect the pipeline requirements
 
