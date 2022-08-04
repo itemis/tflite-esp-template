@@ -17,15 +17,28 @@ jobs:
     - name: Load submodules
       run: chmod +x ./scripts/update_components.sh && ./scripts/update_components.sh 
 
-    - name: Cpp Lint
-      uses: cpp-linter/cpp-linter-action@v1
-      id: cpp-linter
-      with:
-        style: Google
-
     - name: esp-idf build
       uses: espressif/esp-idf-ci-action@v1
       with:
         esp_idf_version: v4.4
         target: esp32
         path: '.'
+
+    - name: Extract compile_commands.json
+      run: cp build/compile_commands.json .
+      # the following compilation flags originate from esp-idf
+      # they must be removed as they are unknown to clang
+      run: sed -i 's/-mlongcalls/ /g' compile_commands.json
+      run: sed -i 's/-fno-tree-switch-conversion/ /g' compile_commands.json
+      run: sed -i 's/-fstrict-volatile-bitfields/ /g' compile_commands.json
+
+
+    - name: Cpp Lint
+      uses: cpp-linter/cpp-linter-action@v1
+      id: cpp-linter
+      with:
+        style: file # use .clang-format
+        tidy-checks: "" # use .clang-tidy
+        ignore: ".github|components|build"
+        files-changed-only: false
+        database: compile_commands.json
