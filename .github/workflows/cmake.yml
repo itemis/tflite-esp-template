@@ -24,7 +24,7 @@ jobs:
       uses: actions/cache@v3
       with:
         path: "/home/runner/work/_actions/cpp-linter/cpp-linter-action/v1"
-        key: key: ${{ runner.os }}-cpp-linter
+        key: ${{ runner.os }}-cpp-linter
 
     - name: Cache esp-idf build
       uses: actions/cache@v3
