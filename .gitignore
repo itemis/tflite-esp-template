@@ -1,3 +1,6 @@
+# required in project root for clang-tidy
+compile_commands.json
+
 # Data and trained models
 model_creation/data/*
 model_creation/models/*

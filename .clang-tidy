@@ -1,0 +1,66 @@
+---
+Checks:          'clang-diagnostic-*,clang-analyzer-*,google-*'
+WarningsAsErrors: ''
+HeaderFilterRegex: ''
+AnalyzeTemporaryDtors: false
+FormatStyle:     none
+User:            rafael
+CheckOptions:
+  - key:             modernize-loop-convert.MinConfidence
+    value:           reasonable
+  - key:             modernize-replace-auto-ptr.IncludeStyle
+    value:           llvm
+  - key:             google-readability-namespace-comments.ShortNamespaceLines
+    value:           '10'
+  - key:             cert-oop54-cpp.WarnOnlyIfThisHasSuspiciousField
+    value:           '0'
+  - key:             cppcoreguidelines-non-private-member-variables-in-classes.IgnoreClassesWithAllMemberVariablesBeingPublic
+    value:           '1'
+  - key:             cert-dcl16-c.NewSuffixes
+    value:           'L;LL;LU;LLU'
+  - key:             modernize-loop-convert.MaxCopySize
+    value:           '16'
+  - key:             google-readability-namespace-comments.SpacesBeforeComments
+    value:           '2'
+  - key:             google-build-namespaces.HeaderFileExtensions
+    value:           ';h;hh;hpp;hxx'
+  - key:             google-readability-function-size.VariableThreshold
+    value:           '4294967295'
+  - key:             cppcoreguidelines-explicit-virtual-functions.IgnoreDestructors
+    value:           '1'
+  - key:             google-readability-function-size.LineThreshold
+    value:           '4294967295'
+  - key:             llvm-qualified-auto.AddConstToQualified
+    value:           '0'
+  - key:             google-readability-function-size.BranchThreshold
+    value:           '4294967295'
+  - key:             modernize-loop-convert.NamingStyle
+    value:           CamelCase
+  - key:             google-runtime-int.SignedTypePrefix
+    value:           int
+  - key:             google-readability-function-size.StatementThreshold
+    value:           '800'
+  - key:             llvm-else-after-return.WarnOnConditionVariables
+    value:           '0'
+  - key:             google-runtime-int.UnsignedTypePrefix
+    value:           uint
+  - key:             google-readability-function-size.NestingThreshold
+    value:           '4294967295'
+  - key:             cert-str34-c.DiagnoseSignedUnsignedCharComparisons
+    value:           '0'
+  - key:             modernize-pass-by-value.IncludeStyle
+    value:           llvm
+  - key:             google-readability-braces-around-statements.ShortStatementLines
+    value:           '1'
+  - key:             google-readability-function-size.ParameterThreshold
+    value:           '4294967295'
+  - key:             google-runtime-int.TypeSuffix
+    value:           ''
+  - key:             google-global-names-in-headers.HeaderFileExtensions
+    value:           ';h;hh;hpp;hxx'
+  - key:             modernize-use-nullptr.NullMacros
+    value:           'NULL'
+  - key:             llvm-else-after-return.WarnOnUnfixable
+    value:           '0'
+...
+
