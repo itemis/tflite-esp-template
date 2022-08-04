@@ -51,4 +51,3 @@ jobs:
         tidy-checks: "" # use .clang-tidy
         ignore: ".github|components|build"
         files-changed-only: false
-        database: ./compile_commands.json
