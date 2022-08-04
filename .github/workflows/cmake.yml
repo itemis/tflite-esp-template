@@ -20,6 +20,12 @@ jobs:
     - name: Load submodules
       run: chmod +x ./scripts/update_components.sh && ./scripts/update_components.sh 
 
+    - name: Cache cpp-linter
+      uses: actions/cache@v3
+      with:
+        path: "/home/runner/work/_actions/cpp-linter/cpp-linter-action/v1"
+        key: key: ${{ runner.os }}-cpp-linter
+
     - name: Cache esp-idf build
       uses: actions/cache@v3
       with:
@@ -47,7 +53,8 @@ jobs:
       uses: cpp-linter/cpp-linter-action@v1
       id: cpp-linter
       with:
-        style: file # use .clang-format
+        # don't use .clang-format because versions for clang-format versions are incompatible
+        style: google
         tidy-checks: "" # use .clang-tidy
         ignore: ".github|components|build"
         files-changed-only: false
