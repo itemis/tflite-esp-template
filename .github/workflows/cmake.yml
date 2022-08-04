@@ -25,13 +25,13 @@ jobs:
         path: '.'
 
     - name: Extract compile_commands.json
-      run: cp build/compile_commands.json .
       # the following compilation flags originate from esp-idf
       # they must be removed as they are unknown to clang
-      run: sed -i 's/-mlongcalls/ /g' compile_commands.json
-      run: sed -i 's/-fno-tree-switch-conversion/ /g' compile_commands.json
-      run: sed -i 's/-fstrict-volatile-bitfields/ /g' compile_commands.json
-
+      run: |
+        cp build/compile_commands.json .
+        sed -i 's/-mlongcalls/ /g' compile_commands.json
+        sed -i 's/-fno-tree-switch-conversion/ /g' compile_commands.json
+        sed -i 's/-fstrict-volatile-bitfields/ /g' compile_commands.json
 
     - name: Cpp Lint
       uses: cpp-linter/cpp-linter-action@v1
