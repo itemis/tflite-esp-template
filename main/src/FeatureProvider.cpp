@@ -9,6 +9,6 @@ void FeatureProvider::ExtractFeatures() {
 }
 
 void FeatureProvider::WriteDataToModel(TfLiteTensor* modelInput) {
-  // TODO: check size of modelInput data.
+  // TODO(nrieder@itemis.com): check size of modelInput data.
   std::copy(data.begin(), data.end(), modelInput->data.f);
 }

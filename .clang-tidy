@@ -4,7 +4,7 @@ WarningsAsErrors: ''
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
 FormatStyle:     none
-User:            rafael
+User:            user
 CheckOptions:
   - key:             modernize-loop-convert.MinConfidence
     value:           reasonable
