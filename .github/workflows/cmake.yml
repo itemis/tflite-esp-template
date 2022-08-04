@@ -52,7 +52,3 @@ jobs:
         ignore: ".github|components|build"
         files-changed-only: false
         database: ./compile_commands.json
-
-    - name: Fail on cpp lint errors
-        if: steps.cpp-linter.outputs.checks-failed > 0
-        run: exit 1
