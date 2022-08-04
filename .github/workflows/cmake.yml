@@ -54,5 +54,5 @@ jobs:
         database: ./compile_commands.json
 
     - name: Fail on cpp lint errors
-        if: steps.linter.outputs.checks-failed > 0
+        if: steps.cpp-linter.outputs.checks-failed > 0
         run: exit 1
