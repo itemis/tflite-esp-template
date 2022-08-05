@@ -2,7 +2,7 @@ name: CMake
 
 on:
   push:
-    branches: [ "main", "ci-linter-cpp" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
