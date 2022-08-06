@@ -1,14 +1,17 @@
 name: CMake
+
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+
 jobs:
+
   build:
     runs-on: ubuntu-latest
-    steps:
 
+    steps:
     - name: Checkout repo
       uses: actions/checkout@v2
       with:
@@ -17,15 +20,35 @@ jobs:
     - name: Load submodules
       run: chmod +x ./scripts/update_components.sh && ./scripts/update_components.sh 
 
-    - name: Cpp Lint
-      uses: cpp-linter/cpp-linter-action@v1
-      id: cpp-linter
+    - name: Cache esp-idf build
+      uses: actions/cache@v3
       with:
-        style: Google
+        path: "build"
+        key: ${{ runner.os }}-build
 
-    - name: esp-idf build
+    - name: Esp-idf build
       uses: espressif/esp-idf-ci-action@v1
       with:
         esp_idf_version: v4.4
         target: esp32
-        path: '.'
+        path: "."
+
+    - name: Extract compile_commands.json
+      # the following compilation flags originate from esp-idf
+      # they must be removed as they are unknown to clang
+      run: |
+        cp build/compile_commands.json .
+        sed -i "s/-mlongcalls/ /g" compile_commands.json
+        sed -i "s/-fno-tree-switch-conversion/ /g" compile_commands.json
+        sed -i "s/-fstrict-volatile-bitfields/ /g" compile_commands.json
+        cat ./compile_commands.json
+
+    - name: Cpp Lint
+      uses: cpp-linter/cpp-linter-action@v1
+      id: cpp-linter
+      with:
+        # don't use .clang-format because versions for clang-format versions are incompatible
+        style: google
+        tidy-checks: "" # use .clang-tidy
+        ignore: ".github|components|build"
+        files-changed-only: false
